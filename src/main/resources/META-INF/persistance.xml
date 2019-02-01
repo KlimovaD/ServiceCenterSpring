@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+
+    <persistence-unit name="my-pms">
+        <class>com.kspt.pms.entity.User</class>
+        <class>com.kspt.pms.entity.Device</class>
+        <class>com.kspt.pms.entity.Receipt</class>
+        <class>com.kspt.pms.entity.Invoice</class>
+        <class>com.kspt.pms.entity.BankAccount</class>
+    </persistence-unit>
+
+</persistence>

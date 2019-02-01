@@ -1,0 +1,73 @@
+<div data-gjs="navbar" class="navbar">
+    <div class="navbar-container">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+            <a href="#/user/{{receiptCtrl.authlogin}}" class="navbar-menu-link">Home</a>
+            <a href="#/login" class="navbar-menu-link">Log out</a>
+        </nav>
+    </div>
+</div>
+<form class="form">
+    <div class="row">
+        <div class="cell">
+            <div class="cell">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="th">ID</th>
+                        <th class="th">Serial</th>
+                        <th class="th">Brand</th>
+                        <th class="th">Model</th>
+                        <th class="th">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="tr" ng-repeat="receipt in receipts" ng-click="receiptCtrl.select(receipt)">
+                        <td class="td">{{receipt.id}}</td>
+                        <td class="td">{{receipt.device.serial}}</td>
+                        <td class="td">{{receipt.device.brand}}</td>
+                        <td class="td">{{receipt.device.model}}</td>
+                        <td class="td">{{receipt.status}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="row">
+                <select class="select" ng-model="serial">
+                    <option disabled="disabled" selected="selected">-- Select Device serial number</option>
+                    <option ng-repeat="device in devices">{{device.serial}}: {{device.brand}} {{device.model}}</option>
+                </select>
+                <select class="select" ng-model="type">
+                    <option disabled="disabled" selected="selected">-- Select Repair Type --</option>
+                    <option ng-repeat="type in types">{{type}}</option>
+                </select>
+                <textarea placeholder="Malfunction description" ng-model="malfunction" class="textarea"></textarea>
+                <textarea placeholder="Note" ng-model="note" class="textarea"></textarea>
+                <select class="select" ng-model="status">
+                    <option disabled="disabled" selected="selected">-- Select Receipt Status --</option>
+                    <option ng-repeat="status in receipt_status">{{status}}</option>
+                </select>
+                <div class="row">
+                    <div class="cell">
+                        <button class="button" ng-show="receiptCtrl.instance.role !== 'Master' && invoiceExists">Current Invoice</button>
+                    </div>
+                    <div class="cell">
+                        <button class="button" ng-click="receiptCtrl.createInvoice()" ng-show="receiptCtrl.instance.role === 'Receiver' && correctStatus">Create Invoice</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell" ng-show="receiptCtrl.instance.role === 'Receiver'">
+            <button class="button"  ng-click="receiptCtrl.create()">New</button>
+        </div>
+        <div class="cell" ng-show="receiptCtrl.instance.role === 'Master' && masterNotSet">
+            <button class="button" ng-click="receiptCtrl.setMaster()">Assign yourself</button>
+        </div>
+        <div class="cell" ng-show="receiptCtrl.instance.role !== 'Client'">
+            <button class="button" ng-click="receiptCtrl.updateReceipt()">Update</button>
+        </div>
+    </div>
+</form>

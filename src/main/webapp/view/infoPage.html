@@ -1,0 +1,73 @@
+<div data-gjs="navbar" class="navbar">
+  <div class="navbar-container">
+      <nav data-gjs="navbar-menu" class="navbar-menu">
+        <a ng-href="#/user/{{userCtrl.authlogin}}" class="navbar-menu-link">Home</a>
+        <a ng-href="#/login" class="navbar-menu-link">Log out</a>
+        <a ng-href="http://grapesjs.com/demo.html#" data-highlightable="1" class="navbar-menu-link">About</a>
+      </nav>
+  </div>
+</div>
+<div>
+  <div class="row">
+      <div class="cell">
+        <div class="row">
+          <div class="row">
+            <div class="cell cell30">
+              <h3>Id: {{infoCtrl.instance.id}}</h3>
+              <h3>Login: {{infoCtrl.instance.login}}</h3>
+              <h3>Role: {{infoCtrl.instance.role}}</h3>
+            </div>
+            <div class="cell cell70">
+              <h3>Name: {{infoCtrl.instance.name}}</h3>
+              <h3>Surname: {{infoCtrl.instance.surname}}</h3>
+              <h3>Patronymic: {{infoCtrl.instance.name}}</h3>
+              <h3>Phone: {{infoCtrl.instance.phone}}</h3>
+              <h3>E-mail: {{infoCtrl.instance.email}}</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="cell">
+            <div class="row">
+              <div class="cell">
+                <h3>Connected receipts:</h3>
+                <input type="radio" value="all" ng-model="status" name="status" class="radio" ng-click="infoCtrl.checkButton()" checked>All
+                <input type="radio" value="openned" ng-model="status" name="status" class="radio" ng-click="infoCtrl.checkButton()">Opened
+                <input type="radio" value="in_progress" ng-model="status" name="status" class="radio" ng-click="infoCtrl.checkButton()"> In progress
+                <input type="radio" value="closed" name="status" ng-model="status" class="radio" ng-click="infoCtrl.checkButton()"> Closed
+                <h4 class="alert-heading" ng-repeat="receipt in receipts">
+                  <a ng-href="#/report/{{it.id}}">{{receipt.id}} : {{receipt.status}}</a>
+                </h4>
+              </div>
+              <div class="cell">
+                <h3>Devices:</h3>
+                    <h4 class="alert-heading" ng-repeat="device in userDevices">
+                      <a ng-href="#/device/{{device.serial}}">{{device.serial}} : {{device.brand}} {{device.model}}</a>
+                    </h4>
+              </div>
+              <div class="cell" ng-show="infoCtrl.instance.role !== 'Master'">
+                <h3>Invoices:</h3>
+                  <input type="radio" name="invoice" ng-model="invoice" value="all" checked class="radio">All
+                  <input type="radio" name="invoice" ng-model="invoice" value="paid" class="radio">Paid
+                  <input type="radio" name="invoice" ng-model="invoice" value="waiting" class="radio">Waiting
+                <h4 class="alert-heading">
+                  <a ng-href="#/report/{{it.id}}">{{it.serial}} : {{it.brand}} {{it.model}}</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+            <div class="cell">
+              <button type="submit" ng-click="infoCtrl.openReceipts()" class="button">Show Receipts</button>
+            </div>
+              <div class="cell">
+                <button type="submit" ng-click="infoCtrl.openDevices()" class="button">Show Devices</button>
+              </div>
+            <div class="cell">
+              <button type="submit" class="button">Show Invoices</button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

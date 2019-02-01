@@ -1,0 +1,22 @@
+<div data-gjs="navbar" xmlns="http://java.sun.com/jsf/html" class="navbar">
+    <div class="navbar-container">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+            <a ng-href="#/user/{{invoiceCtrl.instance.login}}" class="navbar-menu-link">Home</a>
+            <a ng-href="#/login" class="navbar-menu-link">Log out</a>
+        </nav>
+    </div>
+</div>
+<div class="cell">
+        <h3>Receipt: {{invoiceCtrl.receipt.id}}</h3>
+        <input ng-model="price" placeholder="Price" class="input"/>
+        <h3>Client: {{receipt.client.login}}</h3>
+        <h3>Receiver: {{receipt.receiver.login}}</h3>
+</div>
+<div class="row">
+    <div class="cell">
+        <button ng-click="invoiceCtrl.createInvoice()" class="button">Create</button>
+    </div>
+    <div class="cell">
+        <button ng-show="invoiceCtrl.instance.role === 'User'"  class="button">Pay</button>
+    </div>
+</div>

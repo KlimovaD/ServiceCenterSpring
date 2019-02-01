@@ -1,0 +1,55 @@
+<div data-gjs="navbar" xmlns="http://java.sun.com/jsf/html" class="navbar">
+    <div class="navbar-container">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+            <a ng-href="#/user/{{deviceCtrl.instance.login}}" class="navbar-menu-link">Home</a>
+            <a ng-href="#/login" class="navbar-menu-link">Log out</a>
+            <a ng-href="http://grapesjs.com/demo.html#" data-highlightable="1" class="navbar-menu-link">About</a>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="cell">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="th">Serial
+                </th>
+                <th class="th">Brand
+                </th>
+                <th class="th">Model
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="device in devices" ng-click="deviceCtrl.tableSelect(device.serial)" class="tr">
+                <td class="td">{{device.serial}}</td>
+                <td class="td">{{device.brand}}</td>
+                <td class="td">{{device.model}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cell">
+        <input ng-model="serial" id="serial" placeholder="Serial Number" class="input"/>
+        <input ng-model="type" id="type" placeholder="Type" class="input"/>
+        <input ng-model="brand" id="brand" placeholder="Brand" class="input"/>
+        <input ng-model="model" id="model" placeholder="Model" class="input"/>
+        <input ng-model="client" id="client" placeholder="Client" class="input"/>
+        <label for="purchase" class="label">Purchase date<br/></label>
+        <input ng-model="purchase" id="purchase" type="date" class="input"/>
+        <label for="warrantyexp" class="label">Warranty Expiration</label>
+        <input ng-model="warrantyexp" id="warrantyexp" type="date" class="input"/>
+        <label for="previous" class="label">Previous Repair</label>
+        <input ng-model="previous" id="previous" type="date" class="input"/>
+        <label for="repairexp" class="label">Repair Warranty</label>
+        <input ng-model="repairexp" id="repairexp" type="date" class="input"/>
+    </div>
+</div>
+<div class="row">
+    <div class="cell">
+        <button ng-show="deviceCtrl.instance.role === 'Receiver'" ng-click="deviceCtrl.addDevice()" class="button">New</button>
+    </div>
+    <div class="cell">
+        <button ng-show="deviceCtrl.instance.role === 'Receiver'" ng-click="deviceCtrl.updateDevice()" class="button">Update</button>
+    </div>
+</div>

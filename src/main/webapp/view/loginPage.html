@@ -1,0 +1,61 @@
+<div data-gjs="navbar" class="navbar">
+    <div class="navbar-container">
+            <nav data-gjs="navbar-menu" class="navbar-menu">
+                <a ng-href="http://grapesjs.com/demo.html#" data-highlightable="1" class="navbar-menu-link">About</a>
+                <a ng-href="#" class="navbar-menu-link">Contact</a>
+            </nav>
+        </div>
+    </div>
+<form class="form">
+    <div class="form-group">
+    </div>
+    <div class="row">
+        <div class="cell">
+        </div>
+        <div class="cell">
+            <div class="row">
+                <div class="cell">
+                    <div class="row">
+                        <div class="cell">
+                            <input ng-model="login" class="input" placeholder="Login"/>
+                            <input ng-model="passwd" type="password" class="input" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">
+                            <button  ng-click="loginCtrl.signIn()" class="button">Sign in</button>
+                        </div>
+                        <div class="cell">
+                            <button  ng-click="loginCtrl.setRegister()" class="button">Sign up</button>
+                        </div>
+                    </div>
+                    <div ng-show="loginCtrl.isRegister" class="row">
+                        <div class="cell">
+                            <input ng-model="loginReg" class="input" placeholder="Login"/>
+                            <input ng-model="password1" type="password" class="input" placeholder="Password"/>
+                            <input ng-model="password2" type="password" class="input" placeholder="Repeat password"/>
+                            <input ng-model="name" class="input" placeholder="Name"/>
+                            <input ng-model="surname" class="input" placeholder="Surname"/>
+                            <input ng-model="patronymic" class="input" placeholder="Patronymic"/>
+                            <input ng-model="email" type="email" class="input" placeholder="E-mail"/>
+                            <input ng-model="phone" class="input" placeholder="Phone number"/>
+                            <select class="select" ng-model="role">
+                                <option disabled="disabled" selected="selected" value="">Select user role</option>
+                                <option ng-repeat="role in roles" value="{{role}}">{{role}}</option>
+                            </select>
+                            <button ng-click="loginCtrl.registerUser()" ng-enter="loginCtrl.registerUser()" class="button">Sign up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+        <div class="cell">
+        </div>
+    </div>
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+    </div>
+</form>

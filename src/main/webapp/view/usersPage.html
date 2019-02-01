@@ -1,0 +1,31 @@
+<div data-gjs="navbar" class="navbar">
+    <div class="navbar-container">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+            <a ng-href="#/user/{{userCtrl.authlogin}}" class="navbar-menu-link">Home</a>
+            <a ng-href="#/login" class="navbar-menu-link">Log out</a>
+            <a ng-href="http://grapesjs.com/demo.html#" data-highlightable="1" class="navbar-menu-link">About</a>
+        </nav>
+    </div>
+</div>
+<form class="form">
+  <div class="row">
+    <div class="cell">
+        <div class="row">
+        <div class="cell">
+        <select size="5">
+           <option>1</option>
+        </select>
+        </div>
+        </div>
+        <button  ng-show="deviceCtrl.instance.role === 'Receiver'" class="button" ng-click="deviceCtrl.addDevice()">New</button>
+    </div>
+    <div class="cell">
+          <input ng-model="serial" id="serial" class="input" placeholder="Name"/>
+          <input ng-model="type" id="type" class="input" placeholder="Surname"/>
+          <input ng-model="brand" id="brand" class="input" placeholder="Patronymic"/>
+          <input ng-model="model" id="model" class="input" placeholder="Phone number"/>
+          <input ng-model="client" id="client" class="input" type="email" placeholder="E-mail"/>
+          <button  ng-show="deviceCtrl.instance.role === 'Receiver'" ng-click="deviceCtrl.show()" class="button">Update</button>
+    </div>
+  </div>
+</form>
